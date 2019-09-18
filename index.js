@@ -24,11 +24,12 @@ function johnLennonFacts (facts /*array of strings*/ )  {
   // while() instead of for() to iterate an array:
   
   //  I don't like having the loop step outside of the while() like this
-  while (i<facts.length) {
+ /*
+ while (i<facts.length) {
     factsEmphasized.push(`${facts[i++]}!!!`); 
   
   }
- 
+ //*/
   
   // best solution: use iterators!
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/@@iterator#Alternative_iteration
@@ -41,6 +42,10 @@ function johnLennonFacts (facts /*array of strings*/ )  {
   } 
   //*/
 
+  let value,done;
+  while ( ({value, done} = itFacts.next()) && !done) {
+    factsEmphasized.push(`${value}!!!`);    
+  }
 
   // iterator solution 2: uses a function
   /*
